@@ -24,11 +24,15 @@ private:
   Node *_root;
   void _insert(Node *parent, int k);
   void _preOrderTraverse(Node *parent);
+  void _postOrderTraverse(Node *parent);
+  void _inOrderTraversal(Node *parent);
 public:
   BST();
   ~BST();
 	void insert(int k);
   void preOrderTraverse();
+  void postOrderTraverse();
+  void inOrderTraversal();
 };
 
 #endif
