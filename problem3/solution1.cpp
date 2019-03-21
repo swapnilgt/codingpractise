@@ -1,18 +1,17 @@
 #include <iostream>
-#include "bst.h"
+#include "binarytree.h"
 
 using namespace std;
 
 int main() {
-  BST myBst;
+  int preOrder[7] = {10, 11, 9, 13, 2, 30, 7};
+  int inOrder[7] = {9, 11, 10, 2, 30, 13, 7};
 
-  cout << "Starting to insert" << endl;
-  myBst.insert(1);
-  myBst.insert(2);
-  myBst.insert(-3);
-  myBst.insert(4);
-  cout << "Finish insert" << endl;
+  BinaryTree tree;
 
-  cout << "Traversing preorder" << endl;
-  myBst.preOrderTraverse();
+  tree.deserializeFromPreOrderAndInorder(preOrder, inOrder, 7);
+
+  cout << "Finished deserializing the tree " << endl;
+
+  tree.preOrderTraverse();
 }

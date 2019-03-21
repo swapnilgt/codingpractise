@@ -1,8 +1,7 @@
-#include "binarytree.h"
 //==================================
 // include guard
-#ifndef __BST_H_INCLUDED__
-#define __BST_H_INCLUDED__
+#ifndef __NODE_H_INCLUDED__
+#define __NODE_H_INCLUDED__
 
 //==================================
 // forward declared dependencies
@@ -13,13 +12,11 @@
 // =================================
 // the actual class
 
-class BST : public BinaryTree {
-private:
-  void _insert(Node *parent, int k);
-public:
-  BST();
-  ~BST();
-	void insert(int k);
+struct Node {
+  Node(int value): data(value), left(NULL), right(NULL) {}
+  int data;
+  struct Node *left;
+  struct Node *right;
 };
 
 #endif
