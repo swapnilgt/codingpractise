@@ -8,6 +8,10 @@ BinaryTree::BinaryTree() {
   cout << "Inside binary tree constructor" << endl;
 }
 
+BinaryTree::BinaryTree(Node *root) {
+  _root = root;
+}
+
 BinaryTree::~BinaryTree() {
   cout << "Inside binary tree desctructor" << endl;
 }
@@ -89,4 +93,72 @@ void BinaryTree::_inOrderTraversal(Node *parent) {
 
 void BinaryTree::inOrderTraversal() {
   _inOrderTraversal(_root);
+}
+
+bool BinaryTree::_isUnivalTree(Node *parent, int &count) {
+
+  // Handling case, when root is itself null ...
+  if(parent == NULL) {
+    cout << "There are no elements in the tree" << endl;
+    return 0;
+  }
+
+  // If the node is a leaf node ...
+  if(parent -> left == NULL && parent -> right == NULL) {
+    cout << "Reached the leaf node with val " << parent -> data << endl;
+    return 1;
+  } else if(parent -> right == NULL) {
+    cout << "< We only have left" << endl;
+    if(_isUnivalTree(parent -> left, count)) {
+      count++;
+      cout << "!!Returning from left incremented count is " << count << endl;
+      if(parent -> left -> data == parent -> data) {
+          return 1;
+      } else {
+          return 0;
+      }
+    } else  {
+      return 0;
+    }
+  } else if(parent -> left == NULL) {
+    cout << "> We only have the right" << endl;
+    if(_isUnivalTree(parent -> right, count)) {
+      count++;
+      cout << "!!Returning from right incremented count is " << count << endl;
+      if(parent -> right -> data == parent -> data) {
+          return 1;
+      } else {
+          return 0;
+      }
+    } else  {
+      return 0;
+    }
+  } else {
+    cout << "< > We have both left and right" << endl;
+    bool leftUnival = false;
+    bool rightUnival = false;
+    if(_isUnivalTree(parent -> left, count)) {
+      leftUnival = true;
+      count++;
+      cout << "@!!Returning from left incremented count is " << count << endl;
+    }
+    if(_isUnivalTree(parent -> right, count)) {
+      rightUnival = true;
+      count++;
+      cout << "@!!Returning from right incremented count is " << count << endl;
+    }
+    if(leftUnival && rightUnival && parent -> left -> data == parent -> right -> data && parent -> data) {
+      return 1;
+    } else {
+      return 0;
+    }
+  }
+}
+
+int BinaryTree::countUnivalTrees() {
+  int count = 0;
+  if(_isUnivalTree(_root, count)) {
+    count++;
+  }
+  return count;
 }

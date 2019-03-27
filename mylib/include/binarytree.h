@@ -21,13 +21,16 @@ protected:
   void _preOrderTraverse(Node *parent);
   void _postOrderTraverse(Node *parent);
   void _inOrderTraversal(Node *parent);
+  bool _isUnivalTree(Node *parent, int& count);
 public:
   BinaryTree();
+  BinaryTree(Node *root);
   ~BinaryTree();
   void preOrderTraverse();
   void postOrderTraverse();
   void inOrderTraversal();
   void deserializeFromPreOrderAndInorder(int preOrder[], int inOrder[], int size);
+  int countUnivalTrees();
 };
 
 #endif
