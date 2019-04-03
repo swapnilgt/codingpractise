@@ -15,6 +15,7 @@
 class Utils {
 public:
   static int getIntFromChar(char input);
+  static long long int nChoosek(int n, int r);
 };
 
 #endif
