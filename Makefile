@@ -3,7 +3,7 @@ RM=rm -f
 CFLAGS  = -g -Wall
 CPPFLAGS=-g $(shell root-config --cflags)
 INCLUDES = -I./mylib/include
-SRCS = mylib/bst.cpp mylib/binarytree.cpp mylib/xorll.cpp mylib/utils.cpp mylib/trie.cpp dailycodingproblem/problem18/solution1.cpp
+SRCS = mylib/binarytree.cpp mylib/xorll.cpp mylib/utils.cpp mylib/trie.cpp mylib/linkedlist.cpp dailycodingproblem/problem20/solution1.cpp
 MAIN = a.out
 
 # define the CPP object files
