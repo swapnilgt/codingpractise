@@ -23,7 +23,6 @@ private:
   TrieNode *_root;
   void _insert(string s, int i, TrieNode *parent);
   void _getSuggestionsFor(string s, TrieNode *parent, vector<string> & retVal);
-
 public:
   Trie(); //  intialize the values inside the structure ....
   ~Trie();

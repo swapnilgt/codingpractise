@@ -1,1 +1,2 @@
 problem19
+problem22-problem26
