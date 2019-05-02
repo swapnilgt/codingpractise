@@ -15,8 +15,10 @@
 struct Node {
   Node(int value): data(value), left(NULL), right(NULL) {}
   int data;
+  bool isLocked;
   struct Node *left;
   struct Node *right;
+  struct Node *parent;
 };
 
 #endif

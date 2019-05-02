@@ -162,3 +162,69 @@ int BinaryTree::countUnivalTrees() {
   }
   return count;
 }
+
+bool BinaryTree::_checkLockPrecondition(Node * node) {
+
+  // CHecking the children ...
+  bool checkChildren = _checkChildrenFree(node);
+
+  if(!checkChildren) {
+    return false;
+  }
+
+  // Checking the parents ...
+  while(node -> parent != NULL) {
+    if(node->parent->isLocked) {
+      return false;
+    }
+    node = node -> parent;
+  }
+
+  return true;
+
+}
+
+bool BinaryTree::_checkChildrenFree(Node *node) {
+  if(node == NULL) {
+    return true;
+  }
+
+  if(node -> isLocked == true) {
+    return false;
+  }
+
+  bool leftChild = _checkChildrenFree(node -> left);
+  if(!leftChild) {
+    return false;
+  }
+
+  bool rightChild = _checkChildrenFree(node -> right);
+  if(!rightChild) {
+    return false;
+  }
+
+  return true;
+}
+
+bool BinaryTree::isLocked(Node *node) {
+  return node -> isLocked;
+}
+bool BinaryTree::lockNode(Node *node) {
+    if(!_checkLockPrecondition(node)) {
+      return false;
+    }
+
+    node -> isLocked = true;
+
+    return true;
+}
+
+bool BinaryTree::unlockNode(Node *node) {
+  if(!_checkLockPrecondition(node)) {
+    return false;
+  }
+
+  node -> isLocked = false;
+
+  return true;
+}

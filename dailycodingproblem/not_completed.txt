@@ -1,2 +1,4 @@
 problem19
-problem22-problem26
+problem22
+problem23-problem26
+problem27-last

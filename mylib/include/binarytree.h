@@ -22,6 +22,8 @@ protected:
   void _postOrderTraverse(Node *parent);
   void _inOrderTraversal(Node *parent);
   bool _isUnivalTree(Node *parent, int& count);
+  bool _checkLockPrecondition(Node* node);
+  bool _checkChildrenFree(Node *node);
 public:
   BinaryTree();
   BinaryTree(Node *root);
@@ -31,6 +33,9 @@ public:
   void inOrderTraversal();
   void deserializeFromPreOrderAndInorder(int preOrder[], int inOrder[], int size);
   int countUnivalTrees();
+  bool isLocked(Node *node);
+  bool lockNode(Node *node);
+  bool unlockNode(Node *node);
 };
 
 #endif
