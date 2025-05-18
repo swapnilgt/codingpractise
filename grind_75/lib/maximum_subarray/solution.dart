@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 class Solution {
   int maxSubArray(List<int> nums) {
     if (nums.length == 1) return nums[0];
