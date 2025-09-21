@@ -20,7 +20,11 @@ This algorithm will always ensure smoothening of traffic. Suppose, we have a cap
 
 This algorithm can lead to burst of traffic at the edge of the time windows. Suppose the time window is 1 minute and maximum number of requests allowed is 10. If 10 requests come in the first 59 seconds, they will be allowed. If suddenly 10 more requests come in the next second, they will also be allowed as they fall in the next time window. This will lead to 20 requests being processed within actual time of 1 minute.
 
-4. **Sliding Window**: In this algorithm, we define a time window that slides over time. We keep track of the number of requests in the current window and allow or deny requests based on that. Following are the parameters for this algorithm:
+4. **Sliding Window Log**: In this algorithm, we define a time window that slides over time. We keep track of the number of requests in the current window and allow or deny requests based on that. Following are the parameters for this algorithm:
    - `window_size`: Size of the time window in seconds.
    - `max_requests`: Maximum number of requests allowed in the time window.
 This algorithm helps in solving the traffic burst problem posed by the fixed window algorithm. Helps in smoothing the traffic over a period of time as it ensures only a maximum number of requests are allowed in a given time window.
+
+5. **Sliding Window Counter**: This algorithm is a more efficient version of the sliding window log algorithm. Instead of keeping track of each request, we keep track of the number of requests in each window. Instead of maintaining log of each and every request in the past, this algorithm relies on the a weighted average of the percentage of number of requests in the previous window and uses that to calculate the available quota in the current window. Following are the parameters for this algorithm:
+   - `window_size`: Size of the time window in seconds.
+   - `max_requests`: Maximum number of requests allowed in the time window.
